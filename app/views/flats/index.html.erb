@@ -1,0 +1,24 @@
+<h1>Flats</h1>
+
+<div class="card-container">
+  <% @flats.each do |flat| %>
+    <div class="card">
+      <%= image_tag "https://images.unsplash.com/photo-1610394060301-0b42c0b66719?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2700&q=80" %>
+      <div class="card-body">
+        <h5 class="card-title"><strong><%= flat.name %></strong></h5>
+        <p class="card-text"><%= flat.address %></p>
+        <p class="card-text"><%= flat.price_per_night %> <%= flat.number_of_guests %></p>
+        <%= link_to "More info", flat_path(flat), class:"btn btn-primary" %>
+        <%= link_to "Edit", edit_flat_path(flat) %>
+        <%= link_to "Delete",
+              flat_path(flat),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<%= link_to "Create a new one", new_flat_path(@flat), class: "btn btn-primary" %>
